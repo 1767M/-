@@ -58,32 +58,20 @@ public class HtmlParser {
 
            String getCode = e.getElementsByTag("title").text();
            String str = e.getElementsByTag("description").text();
-           double Value = Double.parseDouble(str);
+           double value = Double.parseDouble(str);
 
            CurrencyRate Valuta = new  CurrencyRate();
-           Valuta.currencyCode = "Валюта: "+getCode +"\nКурс = "+ Value;
+           Valuta.currencyCode = getCode;
+           Valuta.currencyVolue = value;
 
 
            Tenge.add(Valuta);
 
         }
 
-        System.out.println(Tenge.get(3).currencyCode );
+        System.out.println(Tenge.get(3).currencyCode+" "+Tnege.get(3).currencyVolue );
 
 
-    }
-
-        public static HttpRequest.BodyPublisher ofFormData (Map < Object, Object > data){
-            var builder = new StringBuilder();
-            for (Map.Entry<Object, Object> entry : data.entrySet()) {
-                if (builder.length() > 0) {
-                    builder.append("&");
-                }
-                builder.append(URLEncoder.encode(entry.getKey().toString(), StandardCharsets.UTF_8));
-                builder.append("=");
-                builder.append(URLEncoder.encode(entry.getValue().toString(), StandardCharsets.UTF_8));
-            }
-            return HttpRequest.BodyPublishers.ofString(builder.toString());
         }
     }
 
